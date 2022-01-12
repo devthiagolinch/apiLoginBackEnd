@@ -1,23 +1,18 @@
 import { Router } from "express";
+import { UsersRepository } from "../Modules/Users/repository/usersRepository";
+import { createUsersController } from "../Modules/Users/useCases/createUser";
 
-import { UsersRepository } from "../repository/usersRepository";
-import { CreateUserService } from "../services/createUserService";
 
 const usersRoutes = Router();
 
-const userRepository = new UsersRepository();
-const createUserService = new CreateUserService(userRepository);
+const usersRepository = new UsersRepository();
 
 usersRoutes.post("/", (request, response) => {
-    const { name, password, email, avatarUrl } = request.body;
-
-    createUserService.execute({name, password, email, avatarUrl})
-
-    return response.status(201).send()
+    return createUsersController.handle(request, response)
 })
 
 usersRoutes.get("/", (request, response) => {
-    const users = userRepository.list();
+    const users = usersRepository.list();
     return response.status(201).json(users)
 })
 

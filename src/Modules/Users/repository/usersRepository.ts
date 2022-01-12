@@ -1,11 +1,5 @@
 import {User} from "../model/user"
-
-interface IUsersRepositoryDTO {
-    name: string;
-    password: string; 
-    email: string;
-    avatarUrl: string;  
-}
+import { IUsersRepositoryDTO } from "./ICreateUsersRepository";
 
 class UsersRepository {
     private users: User[];
