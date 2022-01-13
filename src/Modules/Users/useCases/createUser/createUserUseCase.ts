@@ -1,4 +1,4 @@
-import { UsersRepository } from "../repository/usersRepository";
+import { UsersRepository } from "../../repository/usersRepository";
 
 interface IRequest {
     name: string;
@@ -7,7 +7,7 @@ interface IRequest {
     password: string;
 }
 
-class CreateUserService {
+class CreateUserUseCase {
     constructor (private usersRepository: UsersRepository) {};
 
     execute({name, email, avatarUrl, password}: IRequest): void {
@@ -22,4 +22,4 @@ class CreateUserService {
     }
 }
 
-export { CreateUserService }
+export { CreateUserUseCase }

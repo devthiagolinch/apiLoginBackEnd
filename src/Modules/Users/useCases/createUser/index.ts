@@ -1,5 +1,5 @@
 import { UsersRepository } from "../../repository/usersRepository";
-import { CreateUserService } from "../../services/createUserService";
+import { CreateUserUseCase } from "./createUserUseCase";
 import { CreateUsersController } from "./createUsersController";
 
 /** A ideia do index é exportar de uma vez tudo que esteja dentro do useCase.
@@ -9,7 +9,7 @@ import { CreateUsersController } from "./createUsersController";
  */
 
 const usersRepository = new UsersRepository;
-const createUserService = new CreateUserService(usersRepository);
+const createUserService = new CreateUserUseCase(usersRepository);
 const createUsersController = new CreateUsersController(createUserService);
 
 export { createUsersController, createUserService }
