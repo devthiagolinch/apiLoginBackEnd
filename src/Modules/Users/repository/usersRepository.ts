@@ -1,14 +1,14 @@
 import {User} from "../model/user"
-import { IUsersRepositoryDTO } from "./ICreateUsersRepository";
+import { IUsersRepository, IUsersRepositoryDTO } from "./IUsersRepository";
 
-class UsersRepository {
+class UsersRepository implements IUsersRepository {
     private users: User[];
 
     constructor() {
         this.users = [];
     }
 
-    create({name, password, email, avatarUrl}: IUsersRepositoryDTO): void {
+    create({ name, email, avatarUrl, password }: IUsersRepositoryDTO): void {
         const user = new User();
 
         Object.assign(user, {
@@ -18,18 +18,17 @@ class UsersRepository {
             avatarUrl,
             created_at: new Date()
         });
-
+    
         this.users.push(user)
-    };
-
-    list(){
+    }
+    list(): User[] {
         return this.users;
-    };
+    }
+    findByEmail(email:string): User {
+        const userEmail = this.users.find(user => user.email === email)
+        return userEmail
+    }
 
-    findByEmail(email: string): User | undefined {
-        const user = this.users.find(user => user.email === email)
-        return user
-    };
 }
 
 export { UsersRepository }

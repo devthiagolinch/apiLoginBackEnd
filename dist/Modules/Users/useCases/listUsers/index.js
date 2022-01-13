@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.listUsersUseCase = exports.listUsersController = void 0;
+const usersRepository_1 = require("../../repository/usersRepository");
+const listUsersController_1 = require("./listUsersController");
+const listUsersUseCase_1 = require("./listUsersUseCase");
+const usersRepository = new usersRepository_1.UsersRepository();
+const listUsersUseCase = new listUsersUseCase_1.ListUsersUseCase(usersRepository);
+exports.listUsersUseCase = listUsersUseCase;
+const listUsersController = new listUsersController_1.ListUsersController(listUsersUseCase);
+exports.listUsersController = listUsersController;

@@ -8,10 +8,10 @@ interface IUsersRepositoryDTO {
 }
 
 
-interface ICreateUsersRepository {
-    findByEmail(email: string): User;
+interface IUsersRepository {
     create({name, email, avatarUrl, password}: IUsersRepositoryDTO): void;
     list(): User[];
+    findByEmail(email: string): User;
 }
 
-export { ICreateUsersRepository, IUsersRepositoryDTO }
+export { IUsersRepository, IUsersRepositoryDTO }
