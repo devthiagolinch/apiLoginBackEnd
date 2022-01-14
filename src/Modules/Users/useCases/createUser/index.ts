@@ -8,7 +8,7 @@ import { CreateUsersController } from "./createUsersController";
  * Agora eu preciso enviar o controller para dentro da rota para tudo funcionar.
  */
 
-const usersRepository = new UsersRepository;
+const usersRepository = UsersRepository.getInstance();
 const createUserService = new CreateUserUseCase(usersRepository);
 const createUsersController = new CreateUsersController(createUserService);
 
