@@ -11,7 +11,7 @@ class UsersRepository implements IUsersRepository {
     }
 
     public static getInstance(): UsersRepository {
-        if(!UsersRepository.INSTANCE){
+        if(!UsersRepository.INSTANCE) {
             UsersRepository.INSTANCE = new UsersRepository();
         }
 

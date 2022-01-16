@@ -11,7 +11,7 @@ class SessionUserController {
         const user = this.sessionUserUseCase.execute(email)
 
         if(!user.password === password) {
-            throw new Error("Passord invalid");
+            throw new Error("Invalid password");
         };
 
         return response.status(201).send()

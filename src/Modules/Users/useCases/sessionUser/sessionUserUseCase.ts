@@ -1,8 +1,8 @@
 import { User } from "../../model/user";
-import { IUsersRepository } from "../../repository/IUsersRepository";
+import { UsersRepository } from "../../repository/usersRepository";
 
 class SessionUserUseCase {
-    constructor( private userRepository: IUsersRepository) {}
+    constructor( private userRepository: UsersRepository) {}
 
     execute(email: string): User {
         const user = this.userRepository.findByEmail(email)
