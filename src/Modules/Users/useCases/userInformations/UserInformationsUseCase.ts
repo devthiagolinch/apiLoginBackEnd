@@ -2,7 +2,7 @@ import { User } from "../../model/user";
 import { IUsersRepository } from "../../repository/IUsersRepository";
 
 
-class ListUsersUseCase {
+class UserInformationsUseCase {
     constructor( private usersRepository: IUsersRepository) {};
 
     execute(email: string): User {
@@ -11,4 +11,4 @@ class ListUsersUseCase {
     };
 };
 
-export { ListUsersUseCase }
+export { UserInformationsUseCase }

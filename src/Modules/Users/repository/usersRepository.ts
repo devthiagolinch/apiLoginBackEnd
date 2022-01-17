@@ -9,6 +9,10 @@ class UsersRepository implements IUsersRepository {
     private constructor() {
         this.users = [];
     }
+    findById(id: string): User {
+        const user = this.users.find(user => user.id === id)
+        return user;
+    }
 
     public static getInstance(): UsersRepository {
         if(!UsersRepository.INSTANCE) {

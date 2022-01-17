@@ -1,9 +1,9 @@
 import { UsersRepository } from "../../repository/usersRepository";
 import { UserInformationsController } from "./UserInformationsController";
-import { ListUsersUseCase } from "./UserInformationsUseCase";
+import { UserInformationsUseCase } from "./UserInformationsUseCase";
 
 const usersRepository = UsersRepository.getInstance()
-const listUsersUseCase = new ListUsersUseCase(usersRepository)
-const userInformationsController = new UserInformationsController(listUsersUseCase)
+const userInformationsUseCase = new UserInformationsUseCase(usersRepository)
+const userInformationsController = new UserInformationsController(userInformationsUseCase)
 
-export { userInformationsController, listUsersUseCase }
+export { userInformationsController, userInformationsUseCase }

@@ -12,6 +12,7 @@ interface IUsersRepository {
     create({name, email, avatarUrl, password}: IUsersRepositoryDTO): void;
     list(): User[];
     findByEmail(email: string): User;
+    findById(id: string): User;
 }
 
 export { IUsersRepository, IUsersRepositoryDTO }
