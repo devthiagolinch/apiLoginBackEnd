@@ -4,13 +4,13 @@ import { UsersRepository } from "../../repository/usersRepository";
 class SessionUserUseCase {
     constructor( private userRepository: UsersRepository) {}
 
-    execute(email: string): User {
-        const user = this.userRepository.findByEmail(email)
+    execute(id: string): User {
+        const user = this.userRepository.findById(id)
 
-        if(!user) {
-            throw new Error("User not found!");
+        if(!user){
+            throw new Error("User not found");
         }
-        
+
         return user;
     }
 }

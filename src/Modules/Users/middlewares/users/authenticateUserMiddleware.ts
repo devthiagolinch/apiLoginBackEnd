@@ -15,6 +15,7 @@ function authenticateMidleware(request: Request, response: Response, next: NextF
 
 
     request.user = user
+
     return next()
 }
 

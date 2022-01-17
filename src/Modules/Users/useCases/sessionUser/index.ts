@@ -3,7 +3,7 @@ import { SessionUserController } from "./createSessionUserController";
 import { SessionUserUseCase } from "./createSessionUserUseCase";
 
 const usersRepository = UsersRepository.getInstance();
-const sessionUserUseCase = new SessionUserUseCase(usersRepository);
-const sessionsUserController = new SessionUserController(sessionUserUseCase);
+const createSessionUserUseCase = new SessionUserUseCase(usersRepository);
+const createSessionUserController = new SessionUserController(createSessionUserUseCase);
 
-export { sessionsUserController, sessionUserUseCase }
+export { createSessionUserController, createSessionUserUseCase }

@@ -6,15 +6,11 @@ class SessionUserController {
     constructor( private sessionUserUseCase: SessionUserUseCase) {}
 
     handle(request: Request, response: Response): Response {
-        const { email, password } = request.body;
+        const { id } = request.params;
 
-        const user = this.sessionUserUseCase.execute(email)
+        const user = this.sessionUserUseCase.execute(id)
 
-        if(!user.password === password) {
-            throw new Error("Invalid password");
-        };
-
-        return response.status(201).send()
+        return response.json(user)
     }
 }
 
