@@ -10,6 +10,7 @@ class UserInformationsController {
         const {user} = request;
 
         const userInformation = this.userInformationsUseCase.execute(user.email);
+        
         return response.json(userInformation)
     }
 }

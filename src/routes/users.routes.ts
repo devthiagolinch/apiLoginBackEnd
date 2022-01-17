@@ -15,7 +15,7 @@ usersRoutes.post("/", (request, response) => {
 });
 
 // CREATE AUTHENTICATION
-usersRoutes.post("/:id", (request, response) => {
+usersRoutes.post("/authenticate", (request, response) => {
     return createSessionUserController.handle(request, response)
 });
 

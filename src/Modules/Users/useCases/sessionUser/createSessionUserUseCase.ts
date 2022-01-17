@@ -1,17 +1,27 @@
 import { User } from "../../model/user";
+
 import { UsersRepository } from "../../repository/usersRepository";
 
 class SessionUserUseCase {
-    constructor( private userRepository: UsersRepository) {}
+    constructor( private userRepository: UsersRepository){}
 
-    execute(id: string): User {
-        const user = this.userRepository.findById(id)
+    execute(email: string, password:string): User {
+        const user = this.userRepository.findByEmail(email)
 
         if(!user){
             throw new Error("User not found");
         }
 
+        
+
+        if(user.password !== password){
+            throw new Error("Ivalid password")
+        }
+
+
         return user;
+
+
     }
 }
 

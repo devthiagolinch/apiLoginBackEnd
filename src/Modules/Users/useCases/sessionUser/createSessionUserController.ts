@@ -6,11 +6,11 @@ class SessionUserController {
     constructor( private sessionUserUseCase: SessionUserUseCase) {}
 
     handle(request: Request, response: Response): Response {
-        const { id } = request.params;
+        const { email, password } = request.body;
 
-        const user = this.sessionUserUseCase.execute(id)
+        const user = this.sessionUserUseCase.execute(email, password)
 
-        return response.json(user)
+        return response.status(201).json(user.id);
     }
 }
 

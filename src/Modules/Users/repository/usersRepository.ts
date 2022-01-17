@@ -11,7 +11,7 @@ class UsersRepository implements IUsersRepository {
     }
     findById(id: string): User {
         const user = this.users.find(user => user.id === id)
-        return user;
+        return user
     }
 
     public static getInstance(): UsersRepository {
