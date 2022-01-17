@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { SessionUserUseCase } from "./sessionUserUseCase";
+import { SessionUserUseCase } from "./createSessionUserUseCase";
 
 
 class SessionUserController {

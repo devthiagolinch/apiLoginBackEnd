@@ -5,9 +5,9 @@ import { IUsersRepository } from "../../repository/IUsersRepository";
 class ListUsersUseCase {
     constructor( private usersRepository: IUsersRepository) {};
 
-    execute(): User[] {
-        const all = this.usersRepository.list();
-        return all;
+    execute(email: string): User {
+        const user = this.usersRepository.findByEmail(email)
+        return user
     };
 };
 
