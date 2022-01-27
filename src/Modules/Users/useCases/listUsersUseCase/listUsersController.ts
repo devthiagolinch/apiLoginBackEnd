@@ -7,7 +7,7 @@ class ListUsersController {
 
     handle(request: Request, response: Response) {
         const users = this.listUsersUseCase.execute();
-        return response.json({users})
+        return response.status(201).json(users)
     }
 }
 
