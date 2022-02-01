@@ -8,13 +8,13 @@ class SessionUserController {
     handle(request: Request, response: Response): Response {
         const { email, password } = request.body;
 
-        const user = this.sessionUserUseCase.execute(email, password)
+        try {
+            const user = this.sessionUserUseCase.execute(email, password)
 
-        if(!user){
-            return response.status(404).json(Error.prototype.message)
+            return response.status(201).json(user.id);
+        } catch (error) {
+            return response.status(404).json({error: error})
         }
-
-        return response.status(201).json(user.id);
     }
 }
 

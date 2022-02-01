@@ -9,13 +9,13 @@ class UserInformationsController {
     handle(request: Request, response: Response): Response {
         const {user} = request;
 
-        const userInformation = this.userInformationsUseCase.execute(user.email);
+        try {
+            const userInformation = this.userInformationsUseCase.execute(user.email);
 
-        if(!userInformation){
-            return response.status(404).json(Error.prototype.message)
+            return response.json(userInformation)
+        } catch (error) {
+            return response.status(404).json({error: error})
         }
-        
-        return response.json(userInformation)
     }
 }
 

@@ -24,7 +24,7 @@ usersRoutes.get("/profile/:id", authenticateMidleware, (request, response) => {
     return userInformationsController.handle(request, response)
 });
 
-usersRoutes.get("/", (request, response) => {
+usersRoutes.get("/:id", authenticateMidleware, (request, response) => {
     return listUsersController.handle(request, response)
 })
 

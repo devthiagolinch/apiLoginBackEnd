@@ -10,9 +10,8 @@ function authenticateMidleware(request: Request, response: Response, next: NextF
     const user = userRepository.findById(id)
 
     if(!user) {
-        throw new Error("User not found")
+        return response.status(404).json({message: "User not found"})
     }
-
 
     request.user = user
 
