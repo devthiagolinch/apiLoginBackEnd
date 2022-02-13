@@ -10,7 +10,7 @@ import { userInformationsController } from "../Modules/Users/useCases/userInform
 const usersRoutes = Router();
 
 // CREATE USER
-usersRoutes.post("/", (request, response) => {
+usersRoutes.post("/",(request, response) => {
     return createUsersController.handle(request, response)
 });
 

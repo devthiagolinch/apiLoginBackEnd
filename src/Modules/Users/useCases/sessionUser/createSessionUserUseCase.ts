@@ -9,13 +9,13 @@ class SessionUserUseCase {
         const user = this.userRepository.findByEmail(email)
 
         if(!user){
-            throw new Error("User not found");
+            throw new Error("User not found").message
         }
 
         
 
         if(user.password !== password){
-            throw new Error("Ivalid password")
+            throw new Error("Ivalid password").message
         }
 
 
