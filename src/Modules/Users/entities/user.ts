@@ -1,13 +1,25 @@
+import { Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm";
 import {v4 as uuidv4} from "uuid";
 
-
+@Entity("users")// users
 class User {
     
+    @PrimaryColumn()
     id?: string;
+
+    @Column()
     name: string;
+
+    @Column()
     email: string;
-    avatarUrl: string;
+
+    @Column()
+    avatar?: string;
+
+    @Column()
     password: string;
+
+    @CreateDateColumn()
     created_at: Date;
 
     constructor(){

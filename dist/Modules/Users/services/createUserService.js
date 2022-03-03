@@ -6,13 +6,13 @@ class CreateUserService {
         this.usersRepository = usersRepository;
     }
     ;
-    execute({ name, email, avatarUrl, password }) {
+    execute({ name, email, avatar, password }) {
         const emailAlreadyExists = this.usersRepository.findByEmail(email);
         if (emailAlreadyExists) {
             throw new Error("User already exists");
         }
         ;
-        this.usersRepository.create({ name, password, email, avatarUrl });
+        this.usersRepository.create({ name, password, email, avatar });
     }
 }
 exports.CreateUserService = CreateUserService;

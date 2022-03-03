@@ -6,13 +6,13 @@ class UsersRepository {
     constructor() {
         this.users = [];
     }
-    create({ name, email, avatarUrl, password }) {
+    create({ name, email, avatar, password }) {
         const user = new user_1.User();
         Object.assign(user, {
             name,
             password,
             email,
-            avatarUrl,
+            avatar,
             created_at: new Date()
         });
         this.users.push(user);

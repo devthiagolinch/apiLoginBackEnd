@@ -1,18 +1,19 @@
-import { User } from "../model/user";
+import { User } from "../entities/user";
 
 interface IUsersRepositoryDTO {
+    id?: string;
     name: string;
     password: string; 
     email: string;
-    avatarUrl: string;  
+    avatar?: string;  
 }
 
 
 interface IUsersRepository {
-    create({name, email, avatarUrl, password}: IUsersRepositoryDTO): void;
-    list(): User[];
-    findByEmail(email: string): User;
-    findById(id: string): User;
+    create({name, email, avatar, password, id}: IUsersRepositoryDTO): Promise<void>;
+    list(): Promise<User[]>;
+    findByEmail(email: string): Promise<User>;
+    findById(id: string): Promise<User>;
 }
 
 export { IUsersRepository, IUsersRepositoryDTO }
