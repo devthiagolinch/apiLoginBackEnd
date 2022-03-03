@@ -19,13 +19,7 @@ const createSessionUserController = new SessionUserController();
 const uploadAvatarController = new UploadUserAvatarController();
 
 // CREATE USER
-<<<<<<< HEAD
-usersRoutes.post("/",(request, response) => {
-    return createUsersController.handle(request, response)
-});
-=======
 usersRoutes.post("/", createUsersController.handle);
->>>>>>> typeorm
 
 // CREATE AUTHENTICATION
 usersRoutes.post("/authenticate", createSessionUserController.handle);
