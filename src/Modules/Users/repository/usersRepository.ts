@@ -1,46 +1,36 @@
-import {User} from "../model/user"
+import { getRepository, Repository } from "typeorm";
+import {User} from "../entities/user"
 import { IUsersRepository, IUsersRepositoryDTO } from "./IUsersRepository";
 
 class UsersRepository implements IUsersRepository {
-    private users: User[];
+    private repository: Repository<User>;
 
-    private static INSTANCE: UsersRepository;
-
-    private constructor() {
-        this.users = [];
+    constructor() {
+        this.repository = getRepository(User);
     }
-    findById(id: string): User {
-        const user = this.users.find(user => user.id === id)
-        return user
+    async findById(id: string): Promise<User> {
+        const user = await this.repository.findOne({id})
+        return user;
     }
-
-    public static getInstance(): UsersRepository {
-        if(!UsersRepository.INSTANCE) {
-            UsersRepository.INSTANCE = new UsersRepository();
-        }
-
-        return UsersRepository.INSTANCE
-    }
-
-    create({ name, email, avatarUrl, password }: IUsersRepositoryDTO): void {
-        const user = new User();
-
-        Object.assign(user, {
+    async create({ name, email, avatar, password, id }: IUsersRepositoryDTO): Promise<void> {
+        const user = this.repository.create({
             name,
             password,
             email,
-            avatarUrl,
+            avatar,
+            id,
             created_at: new Date()
         });
     
-        this.users.push(user)
+        await this.repository.save(user)
     }
-    list(): User[] {
-        return this.users;
+    async list(): Promise<User[]> {
+        const users = await this.repository.find();
+        return users;
     }
-    findByEmail(email:string): User {
-        const userEmail = this.users.find(user => user.email === email)
-        return userEmail
+    async findByEmail(email:string): Promise<User> {
+        const user = await this.repository.findOne({email})
+        return user;
     }
 
 }

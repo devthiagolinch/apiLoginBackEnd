@@ -1,27 +1,26 @@
-import { User } from "../../model/user";
+import { inject, injectable } from "tsyringe";
 
-import { UsersRepository } from "../../repository/usersRepository";
+import { User } from "../../entities/user";
+import { IUsersRepository } from "../../repository/IUsersRepository";
 
+@injectable()
 class SessionUserUseCase {
-    constructor( private userRepository: UsersRepository){}
+    constructor(
+        @inject("UsersRepository")
+        private userRepository: IUsersRepository){}
 
-    execute(email: string, password:string): User {
-        const user = this.userRepository.findByEmail(email)
+    async execute(email: string, password:string): Promise<User> {
+        const user = await this.userRepository.findByEmail(email)
 
         if(!user){
             throw new Error("User not found").message
         }
 
-        
-
         if(user.password !== password){
             throw new Error("Ivalid password").message
         }
 
-
         return user;
-
-
     }
 }
 

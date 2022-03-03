@@ -7,8 +7,8 @@ class CreateUsersController {
     }
     ;
     handle(request, response) {
-        const { name, password, email, avatarUrl } = request.body;
-        this.createUseCase.execute({ name, password, email, avatarUrl });
+        const { name, password, email, avatar } = request.body;
+        this.createUseCase.execute({ name, password, email, avatar });
         return response.status(201).send();
     }
     ;
