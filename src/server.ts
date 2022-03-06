@@ -14,4 +14,4 @@ app.use(cors())
 
 app.use("/users", usersRoutes)
 
-app.listen(3332, () => console.log("Server runing!"))
+app.listen(3333, () => console.log("Server runing!"))

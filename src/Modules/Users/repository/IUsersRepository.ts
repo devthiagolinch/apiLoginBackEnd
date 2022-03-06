@@ -11,6 +11,7 @@ interface IUsersRepositoryDTO {
 
 interface IUsersRepository {
     create({name, email, avatar, password, id}: IUsersRepositoryDTO): Promise<void>;
+    delete(id: string): Promise<void>;
     list(): Promise<User[]>;
     findByEmail(email: string): Promise<User>;
     findById(id: string): Promise<User>;

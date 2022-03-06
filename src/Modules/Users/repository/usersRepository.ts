@@ -1,4 +1,5 @@
 import { getRepository, Repository } from "typeorm";
+
 import {User} from "../entities/user"
 import { IUsersRepository, IUsersRepositoryDTO } from "./IUsersRepository";
 
@@ -23,6 +24,9 @@ class UsersRepository implements IUsersRepository {
         });
     
         await this.repository.save(user)
+    }
+    async delete(id: string): Promise<void> {
+        await this.repository.delete({id})
     }
     async list(): Promise<User[]> {
         const users = await this.repository.find();
