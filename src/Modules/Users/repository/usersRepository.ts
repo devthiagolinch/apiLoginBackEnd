@@ -13,13 +13,14 @@ class UsersRepository implements IUsersRepository {
         const user = await this.repository.findOne({id})
         return user;
     }
-    async create({ name, email, avatar, password, id }: IUsersRepositoryDTO): Promise<void> {
+    async create({ name, email, avatar, password, id, isAdmin }: IUsersRepositoryDTO): Promise<void> {
         const user = this.repository.create({
             name,
             password,
             email,
             avatar,
             id,
+            isAdmin,
             created_at: new Date()
         });
     

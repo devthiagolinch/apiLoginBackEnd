@@ -19,6 +19,9 @@ class User {
     @Column()
     password: string;
 
+    @Column()
+    isAdmin: Boolean;
+
     @CreateDateColumn()
     created_at: Date;
 

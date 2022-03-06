@@ -1,12 +1,16 @@
-import { User } from "../../model/user";
+import { inject, injectable } from "tsyringe";
+import { User } from "../../entities/user";
 import { IUsersRepository } from "../../repository/IUsersRepository";
 
-
+@injectable()
 class UserInformationsUseCase {
-    constructor( private usersRepository: IUsersRepository) {};
+    constructor( 
+        @inject("UsersRepository")
+        private usersRepository: IUsersRepository
+    ){};
 
-    execute(email: string): User {
-        const user = this.usersRepository.findByEmail(email)
+    async execute(id: string): Promise<User> {
+        const user = await this.usersRepository.findById(id)
         return user
     };
 };
